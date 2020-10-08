@@ -18,7 +18,7 @@
     <a href="/crud/?kategori=minuman">Minuman</a>
 <form action="{{ url()->current() }}">
     <div class="col-md-11">
-        <input type="text" name="keyword" class="form-control" placeholder="Search users...">
+        <input type="text" name="keyword" class="form-control" placeholder="Cari Produk">
     </div>
     <div class="col-md-1">
         <button type="submit" class="btn btn-primary">
