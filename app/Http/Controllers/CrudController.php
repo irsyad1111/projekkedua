@@ -37,7 +37,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        //
+        return view('crud.tambah');
     }
 
     /**
@@ -48,7 +48,13 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('crud')->insert([
+            'kode_produk' => $request->kode_produk,
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'kategori' => $request->kategori,
+        ]);
+        return redirect()->route('/');
     }
 
     /**
@@ -70,7 +76,10 @@ class CrudController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = crud::where('id', $id)->get();
+
+        //return $produk;
+        return view('crud.edit', compact('item'));
     }
 
     /**
@@ -82,7 +91,13 @@ class CrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('crud')->where('id', $id)->update([
+            'kode_produk' => $request->kode_produk,
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'kategori' => $request->kategori,
+        ]);
+        return redirect()->route('/');
     }
 
     /**
@@ -93,6 +108,7 @@ class CrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('crud')->where('id',$id)->delete();
+        return redirect()->route('/');
     }
 }

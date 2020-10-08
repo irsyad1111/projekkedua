@@ -26,6 +26,7 @@
         </button>
     </div>
 </form>
+<a href="/tambah"><button>Tambah</button></a>
 <table border="1">
     <thead>
     <tr>
@@ -44,7 +45,12 @@
     <td>{{$item->kategori}}</td>
     <td>{{$item->harga}}</td>
     <td>
-    <a href="{{ url ('hapus')}}"><button>Hapus</button></a>
+    <a href="{{ url ('edit/'.$item->id)}}"> <button> Edit</button></a>
+    <form action="{{url('hapus', $item->id)}}" class="d-inline" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapusnya?')">
+        @method('delete')
+        @csrf
+        <button>Hapus</button>
+    </form>
     </td>
     </tr>
     @endforeach

@@ -12,5 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'CrudController@index');
+Route::get('/', 'CrudController@index')->name('/');
 Route::get('crud', 'CrudController@index');
+Route::get('tambah', 'CrudController@create');
+Route::post('simpan', 'CrudController@store');
+Route::delete('hapus/{id}', 'CrudController@destroy');
+Route::get('edit/{id}', 'CrudController@edit');
+Route::post('simpanedit/{id}', 'CrudController@update');
+
+
